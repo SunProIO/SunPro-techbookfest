@@ -1,4 +1,5 @@
 PREDEF:
+  - intro.re
 
 CHAPS:
   - hakatashi.re
@@ -6,3 +7,4 @@ CHAPS:
 APPENDIX:
 
 POSTDEF:
+  - postscript.re
