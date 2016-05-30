@@ -4,9 +4,6 @@ rvm:
 addons:
   apt:
     packages:
-      - texlive-latex-extra
-      - libssl-dev
-      - libreadline-dev
-      - zlib1g-dev
+      - texlive-lang-cjk
 script:
   - bundle exec rake pdf
