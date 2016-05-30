@@ -1,3 +1,7 @@
 *.pdf
 *.epub
 *.xml
+*.html
+*.tex
+
+Gemfile.lock
