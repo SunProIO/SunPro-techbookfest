@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - 2.3.1
+addons:
+  apt:
+    packages:
+      - texlive-latex-extra
+      - libssl-dev
+      - libreadline-dev
+      - zlib1g-dev
+script:
+  - bundle exec rake pdf
