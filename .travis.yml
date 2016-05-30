@@ -1,12 +1,13 @@
 language: ruby
 rvm:
   - 2.3.1
-sudo: required
-before_install:
-  - sudo add-apt-repository ppa:texlive-backports/ppa -y
-  - sudo apt-get update -q
-  - sudo apt-get install texlive-lang-cjk xzdec -y
-  - sudo tlmgr init-usertree
-  - sudo tlmgr install pxjahyper
+addons:
+  apt:
+    packages:
+      - texlive-lang-cjk
+      - texlive-lang-japanese
+      - texlive-fonts-recommended
+      - texlive-latex-extra
+      - ghostscript
 script:
   - bundle exec rake pdf
