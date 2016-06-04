@@ -1,5 +1,7 @@
 = インターネットの1秒がもし1年だったら(仮)
 
+//raw[|latex|\\chapterauthor{hakatashi}]
+
 //lead{
 リード文をここに書く
 //}

@@ -1,5 +1,7 @@
 = まだReactionで消耗してるの? (仮)
 
+//raw[|latex|\\chapterauthor{hideo54}]
+
 //lead{
 リード文をここに書く
 //}

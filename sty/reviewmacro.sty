@@ -48,4 +48,20 @@
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 
+% Define \chapterauthor command
+\makeatletter
+\newcommand{\chapterauthor}[1]{%
+	{%
+		\parindent0pt%
+		\vspace*{-40pt}%
+		\linespread{1.1}%
+		\LARGE#1%
+		\par%
+		\nobreak%
+		\vspace*{35pt}%
+	}
+	\@afterheading%
+}
+\makeatother
+
 \sloppy
