@@ -275,10 +275,10 @@ epubmaker:
 
 # LaTeX用のスタイルファイル(styディレクトリ以下に置くこと)
 texstyle: reviewmacro
-#
+
 # LaTeX用のdocumentclassを指定する
-# texdocumentclass: ["jsbook", "uplatex,oneside"]
-#
+texdocumentclass: ["jsbook", "uplatex,b5j"]
+
 # LaTeX用のコマンドを指定する
 # texcommand: "uplatex"
 #
