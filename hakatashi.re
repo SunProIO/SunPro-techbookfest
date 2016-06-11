@@ -26,7 +26,7 @@
 一回の通信を時系列順に細かく分解し、それぞれの操作でどれくらいの時間が費やされ、
 どんなイベントがいつ発生するのかを逐一追っていきたいと思います。
 
-//footnote[site][@<href>{http://www.slideshare.net/hinakano/composer-phpstudy}]
+//footnote[composer][@<href>{http://www.slideshare.net/hinakano/composer-phpstudy}]
 
 == ルーターのARP解決
 
