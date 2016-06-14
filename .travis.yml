@@ -5,7 +5,7 @@ sudo: required
 dist: trusty
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y texlive-lang-cjk texlive-fonts-recommended texlive-latex-extra dvipsk-ja --no-install-recommends
+  - sudo apt-get install -y texlive-lang-cjk texlive-fonts-recommended dvipsk-ja --no-install-recommends
 script:
   - bundle exec rake pdf
 notifications:
