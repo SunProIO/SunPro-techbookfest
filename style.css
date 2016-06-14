@@ -133,10 +133,10 @@ div.column {
     margin: 2em 0 2em 2em;
     padding: 0.3em 1em;
     background-color: #eee;
-    -webkit-border-radius: 0.7em;    
+    -webkit-border-radius: 0.7em;
 }
 div.column *{
-    margin:0.7em 0;    
+    margin:0.7em 0;
 }
 div.column ul,
 div.column ol {
@@ -177,7 +177,7 @@ pre.cmd, pre.emlist, pre.list, pre.source {
     white-space: pre-wrap;
 }
 
-/* Image Block */  
+/* Image Block */
 /* div.image p.caption {}
 ※captionをそろえた方が良いかも？*/
 div.image {
