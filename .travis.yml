@@ -6,11 +6,22 @@ dist: trusty
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y texlive-lang-cjk texlive-fonts-recommended texlive-latex-extra --no-install-recommends
+script:
+  - bundle exec rake all 0<&-
 after_success:
   - cat kindlegen_linux_2.6_i386_v2_9.tar.gz | tar xzvf - kindlegen
   - ./kindlegen -c2 -verbose -o techbookfest.mobi
-script:
-  - bundle exec rake all 0<&-
+deploy:
+  provider: releases
+  api_key:
+    secure: "i+QmlIsYVeQC86sGGp8lAdAICy8p/XUVqkz+5rnmoh0JVLPDF8WGpFA0TFufpVSCgrwTL4vbZ45gFM4AiWmo1CC+hXrUbw66gS7sXTOQX25BN9SuNQGtzI9p30o4fOO+qU6KG8d/vFBwfgbGdqH90VWSm/nC/VrCJYRrQOPWj2vCJqL0el87JJmKgMQ7iesUc2f3ezEmM5138tenRBBCIRTkdDXouh3e2O605ZJg2uFyo/C906vfoSjNAO7AgOJ7Hb+WRTpiBESNro0bBpvuWawdaMFggpD1rDvY029wM76QsP8bvxd2tVWw86zh0BaDaqKgvqieBh2rO9D57VNcdZI/ziI6G0OGVWMuPaqJZ2L+Xmsk2eaAIDGVXfNmQIA1WjBenyLMhzDXn55xlx2XhLyXVDDLdxLH/lOvXWYSQJBMT5xWUTHhMghdTFqjgryyKl8cvUUTYLI7UYfuDZ+Dd1GFhBUiJ4aahCrL5poUcfBeZWQaK1VRlBLS152umOMWNumPHugV549eM/1Yv0svFWSDbt9ldpmRdMqYYEWj4q2tG/1T27/YlHVQE++ZWZi3HSdGkwMJkfLWWvfpaPKI9550JfE6nMcG1jhqNPr6BiArQSbFRpcFd8q/qkUJ+Ls3Ay0LamEISjJp0pvSWfoqGIt/8B2wU6pzuT7wOmw78PM="
+  file:
+    - techbookfest.pdf
+    - techbookfest.epub
+    - techbookfest.mobi
+  skip_cleanup: true
+  on:
+    tags: true
 notifications:
   slack:
     secure: qKaDeFISlFqnEWaYzCTn+XYAmn3KH+UHCpJr/Smuo3q7UYC4ESmptYzw0nlcUsJ4RTxD+aK7emctM4gumn4ft2NfVb3WhuqdZZ+sV+HAeWP/E1yexuwvVcErarzympBWS4UOfuxAtoL2Eb2qxshFWXfwgRxfZ8xlZQLGY4Y/zL/d8WJAVp8FYHYMKErrvbaMouRcBX75t2F+Zce2avjhnGKfas1yg56do2NQpNsHsKTzNb17brykJ+ts+KvQwdnyklEvZQAdIxBX1LfVG9hPLIJk7gk+622nbdCY/QOttT69xGzwLAAlNBhgUvBaK0m0REAVSlL01D9dgxim7WhHvve+NlYTRXZxe4N0z1K/Epqi75Ltglcb1oAEbJ7BQ4thYTkrITFq/kdwxdfwcBykUURQKtYpImkFJ249YpJEl6rbUPJSdecgPglkT3YVTP0R8aHANRQFtSD3eKt4nM6Vt0tcqOCm2804rijeEThHLNJIDRyGdrlJINpEbe07mdNYHf4wbfUCz+iNvOK5cCHu5jH+h7fmSLH0BrYoNBYKe0uXLJ2cbOipihptRfAILHpb6MdKJziRgNq6r5eLHHuFnP+Nm+/taK+wB8L1ANWSfmOQP3zqb9Uyp/sselZcf9pDDkiTimrra9zurjMt3PmfcYPLQ769p4XpTcT/wD7b+X8=
