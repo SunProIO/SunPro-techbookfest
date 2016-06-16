@@ -6,6 +6,9 @@ dist: trusty
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y texlive-lang-cjk texlive-fonts-recommended texlive-latex-extra --no-install-recommends
+after_success:
+  - cat kindlegen_linux_2.6_i386_v2_9.tar.gz | tar xzvf - kindlegen
+  - ./kindlegen -c2 -verbose -o techbookfest.mobi
 script:
   - bundle exec rake all 0<&-
 notifications:
