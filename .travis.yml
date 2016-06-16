@@ -7,7 +7,7 @@ before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y texlive-lang-cjk texlive-fonts-recommended texlive-latex-extra --no-install-recommends
 script:
-  - bundle exec rake pdf 0<&-
+  - bundle exec rake all 0<&-
 notifications:
   slack:
     secure: qKaDeFISlFqnEWaYzCTn+XYAmn3KH+UHCpJr/Smuo3q7UYC4ESmptYzw0nlcUsJ4RTxD+aK7emctM4gumn4ft2NfVb3WhuqdZZ+sV+HAeWP/E1yexuwvVcErarzympBWS4UOfuxAtoL2Eb2qxshFWXfwgRxfZ8xlZQLGY4Y/zL/d8WJAVp8FYHYMKErrvbaMouRcBX75t2F+Zce2avjhnGKfas1yg56do2NQpNsHsKTzNb17brykJ+ts+KvQwdnyklEvZQAdIxBX1LfVG9hPLIJk7gk+622nbdCY/QOttT69xGzwLAAlNBhgUvBaK0m0REAVSlL01D9dgxim7WhHvve+NlYTRXZxe4N0z1K/Epqi75Ltglcb1oAEbJ7BQ4thYTkrITFq/kdwxdfwcBykUURQKtYpImkFJ249YpJEl6rbUPJSdecgPglkT3YVTP0R8aHANRQFtSD3eKt4nM6Vt0tcqOCm2804rijeEThHLNJIDRyGdrlJINpEbe07mdNYHf4wbfUCz+iNvOK5cCHu5jH+h7fmSLH0BrYoNBYKe0uXLJ2cbOipihptRfAILHpb6MdKJziRgNq6r5eLHHuFnP+Nm+/taK+wB8L1ANWSfmOQP3zqb9Uyp/sselZcf9pDDkiTimrra9zurjMt3PmfcYPLQ769p4XpTcT/wD7b+X8=
