@@ -10,7 +10,7 @@ script:
   - bundle exec rake all 0<&-
 after_success:
   - wget https://kindlegen.s3.amazonaws.com/kindlegen_linux_2.6_i386_v2_9.tar.gz -O - | tar xzvf - kindlegen
-  - ./kindlegen -c2 -verbose -o techbookfest.mobi
+  - ./kindlegen techbookfest.epub -c2 -verbose -o techbookfest.mobi
 deploy:
   provider: releases
   api_key:
