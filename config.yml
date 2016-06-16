@@ -31,6 +31,7 @@ aut:
   - hideo54
   - hakatashi
   - naoya
+  - hiromu
 
 # 以下はオプション
 # 以下はオプション(autと同じように配列書式で複数指定可能)。
@@ -281,7 +282,7 @@ texstyle: reviewmacro
 texdocumentclass: ["jsbook", "uplatex,b5j"]
 
 # LaTeX用のコマンドを指定する
-# texcommand: "uplatex"
+texcommand: "uplatex"
 #
 # LaTeXのコマンドに渡すオプションを指定する
 # texoptions: null

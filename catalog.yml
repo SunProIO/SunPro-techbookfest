@@ -4,8 +4,10 @@ PREDEF:
 CHAPS:
   - hideo54.re
   - hakatashi.re
+  - hiromu.re
 
 APPENDIX:
+  - bib.re
 
 POSTDEF:
   - postscript.re
