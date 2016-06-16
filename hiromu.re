@@ -130,10 +130,7 @@ $ @<b>{source activate tensorflow}
 //cmd{
 $ @<b>{python}
 Python 2.7.11 |Continuum Analytics, Inc.| (default, Dec  6 2015, 18:08:32) 
-[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux2
-Type "help", "copyright", "credits" or "license" for more information.
-Anaconda is brought to you by Continuum Analytics.
-Please check out: http://continuum.io/thanks and https://anaconda.org
+   <略>
 >>> import tensorflow
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -189,10 +186,7 @@ $ @<b>{rpm2cpio libstdc++-4.8.5-4.el7.x86_64.rpm | cpio -idv}
 //cmd{
 $ @<b>{/home/hiromu/miniconda2/envs/tensorflow/lib64/ld-linux-x86-64.so.2 --library-path /home/hiromu/miniconda2/envs/tensorflow/lib64:/home/hiromu/miniconda2/envs/tensorflow/usr/lib64 /home/hiromu/miniconda2/envs/tensorflow/bin/python}
 Python 2.7.11 |Continuum Analytics, Inc.| (default, Dec  6 2015, 18:08:32) 
-[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux2
-Type "help", "copyright", "credits" or "license" for more information.
-Anaconda is brought to you by Continuum Analytics.
-Please check out: http://continuum.io/thanks and https://anaconda.org
+   <略>
 >>> import tensorflow
 >>> 
 //}
@@ -203,3 +197,86 @@ Please check out: http://continuum.io/thanks and https://anaconda.org
 //cmd{
 $ @<b>{alias tfpy="/home/hiromu/miniconda2/envs/tensorflow/lib64/ld-linux-x86-64.so.2 --library-path /home/hiromu/miniconda2/envs/tensorflow/lib64:/home/hiromu/miniconda2/envs/tensorflow/usr/lib64 /home/hiromu/miniconda2/envs/tensorflow/bin/python"}
 //}
+
+=== 追加のライブラリ
+
+また、今後必要となるPythonライブラリ、scipyとPillowをインストールしておきます。
+
+//cmd{
+# scipyはビルド済みパッケージが使えるのでpipからインストール
+$ @<b>{pip install scipy}
+
+# Pillowはビルド済みパッケージが使えないのでcondaからインストール
+$ @<b>{conda install pillow}
+//}
+
+== ご飯データセット
+
+DCGANを動かす前に、サンプルとなるデータセットを用意する必要があります。
+そのため、ご飯の画像がたくさん集められたデータセットを探してみましょう。
+
+=== UEC FOOD-256
+
+UEC FOOD-256は電気通信大学の柳井研究室が公開しているデータセットで、もともとはご飯の画像認識のために作られたものです。
+こちらのWebページ(@<href>{http://foodcam.mobi/dataset256.html})で公開されています。
+
+FOOD-256はその名の通り、256種類の食べ物についての画像を集めたもので、
+ラーメンからたい焼き、ビールまで様々な種類があります(@<href>{http://foodcam.mobi/gallery.cgi}でプレビュー可能)。
+また、特徴的なのは、焼魚定食といった複数の料理が集まった画像もあり、
+焼魚や味噌汁、白飯といったそれぞれの要素がどこにあるのかという座標情報も入っています。
+
+しかし、DCGANで生成するとなると、サンプルデータに一品のものと定食のような複数品のものが混ざっていると複雑性が増して、
+学習が難しくなるのではないかと考えられます。
+そこで、今回は別のデータセットを探すこととしました。
+
+=== Food 101
+
+Food 101はチューリッヒ工科大学のコンピュータビジョン研究室が公開しているデータセットで、こちらはご飯の画像分類のために作られたものです。
+こちらのWebページ(@<href>{https://www.vision.ee.ethz.ch/datasets_extra/food-101/})で公開されています。
+
+こちらは101種類の食べ物についての画像を集めたものですが、
+それぞれの種類ごとになんと1000枚ずつ、合計101000枚の画像が含まれています。
+(tar.gzで5GBと、かなりサイズも大きいです。)
+また、こちらのデータセットでは、基本的に画像の中央に料理が1つという構成になっていることから、
+今回はFood 101を使用することにしました。
+
+=== ご飯の下処理
+
+DCGANのデータセットとして使うには、正方形に切り取った上で、64x64pxくらいにサイズを落としておくと便利です。
+なので、以下の様なスクリプトで変換しておきましょう。
+(ついでに、グレースケールの変な画像も混入しているので取り除いておきます。)
+
+//emlist[変換スクリプト convert.py][python]{
+import sys
+from PIL import Image
+
+for path in sys.argv[1:]:
+    image = Image.open(path)
+
+    if image.mode != 'RGB':
+        print 'Error: %s' % path
+        continue
+
+    ratio = 64.0 / min(image.size)
+    image.thumbnail(map(lambda x: int(x * ratio), image.size))
+
+    x, y = map(lambda x: (x - 64) / 2, image.size)
+    image.crop((x, y, x + 64, y + 64)).save(path)
+//}
+
+以下のようにして変換した後に、同じディレクトリからすべての画像にアクセスできるようにシンボリックリンクを作成しておきます。
+
+//cmd{
+# food101のimagesディレクトリで実行
+$ python convert.py */*.jpg
+Error: bread_pudding/1375816.jpg
+Error: lasagna/3787908.jpg
+Error: steak/1340977.jpg
+$ ln -s */*.jpg ./
+$ rm 1340977.jpg 1375816.jpg 3787908.jpg
+//}
+
+ちなみに、混入していた画像は以下の3つでした。
+一見平和な父子の画像がステーキとは何か怖いものがありますね。(適当)
+
+//image[food101][混入していた画像たち]
