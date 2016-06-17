@@ -3,8 +3,11 @@
 *.xml
 *.html
 *.tex
+*.mobi
 
 Gemfile.lock
+
+kindlegen
 
 ## Editor backup and swap files
 *~

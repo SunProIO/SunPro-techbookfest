@@ -458,7 +458,7 @@ DHE等のアルゴリズムが推奨されています。
 その後、サーバーちゃんに送るための公開鍵を用意します。
 公開鍵を生成するにあたり、暗号論的な安全性を持った乱数を用いて秘密鍵を生成し、
 指定されたCipherSuiteに従って公開鍵を生成し、次のメッセージに載せます。
-そして、自身はその自分の秘密鍵と受け取った公開鍵からpremaster secretを求めます。(Diffie-Hello等)
+そして、自身はその自分の秘密鍵と受け取った公開鍵からpremaster secretを求めます。(Diffie-Hellman等)
 これによりmaster secretをクライアント側で用意できるようになります。
 master secretを用意したらpremaster secretはすぐに抹消します。
 もしこの2人のお便りを盗み見してる人に、premaster secretが漏れてしまえば、
