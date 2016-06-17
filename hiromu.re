@@ -295,3 +295,51 @@ $ rm 1340977.jpg 1375816.jpg 3787908.jpg
 一見平和な父子の画像がステーキとは何か怖いものがありますね。(適当)
 
 //image[food101][混入していた画像たち]
+
+== DCGANによる画像生成
+
+ついに、DCGANによる画像生成にチャレンジしてみましょう。
+
+今回は、Githubで公開されているTensorflow向けの実装(@<href>{https://github.com/carpedm20/DCGAN-tensorflow})を利用します。
+ソースコードを展開したら、dataディレクトリを作り、その中にfood101というディレクトリ名で先ほど用意した画像を配置します。
+
+=== ログ保存場所の変更
+
+動かす前に、少しソースコードを変更をして、ログの保存場所を指定できるようにしておきましょう。
+なぜなら、Tensorflowのログファイルには、後述するWebコンソールで使用するためのデータがたくさん含まれており、
+すぐにホームディレクトリのquotaを突破してしまうからです。
+ですので、場合によっては消えてしまってもなんとかなるログファイルは、tmpfsにでも突っ込んでおきましょう。
+
+変更のためのパッチは、紙面の都合上、こちら(@<href>{https://gist.github.com/hiromu/cce292b0dd17331f475e5c0b72ecc6e6})で公開しております。
+
+=== 学習
+
+では、学習を開始させましょう。
+
+//cmd{
+# /tmpにディレクトリを作る
+$ @<b>{mktemp -d /tmp/tf.XXXXX}
+/tmp/tf.gq5vZ
+
+$ @<b>{python main.py --dataset food101 --is_train True --log_dir /tmp/tf.gq5vZ}
+//}
+
+あとはこのままひたすら放置するだけです。
+ちょっとずつ、@<code>{Epoch: 01 [0899/7950] time: 5021.1231, d_loss: 1.23129383f, g_loss: 2.97537658}というような出力が増えていきますが、
+このうちEpochというのは、学習データを何巡したかということを表しており、この出力では1巡目の11.3%(899/7950)くらい学習データを使ったということを意味しています。
+また、d_lossはDiscriminatorの交差エントロピー(どれくらい間違えたか)を、g_lossはGeneratorの交差エントロピーを表しています。
+
+また、次のようにすることで、Tensorboardと呼ばれるWebビジュアライズツールをポート6006番で使用することができます。
+Tensorboardでは、d_lossやg_lossの変化のグラフや、ネットワークの構造などを見ることができます。
+
+//cmd{
+$ @<b>{tfpy /home/hiromu/miniconda2/envs/tensorflow/bin/tensorboard --logdir=/tmp/tf.gq5vZ}
+//}
+
+=== 学習結果
+
+学習結果は次の画像のようになりました。
+Epochが進むにつれ、皿、目玉焼き、魚介類、野菜というように、いろいろな概念が含まれていくのがとても面白いです。
+
+//image[result][DCGANによるご飯画像の生成結果]
+//footnote[result][モノクロで分かりにくい場合は、こちら(@<href>{https://gist.github.com/hiromu/28d69cce110aafcab4152ef9e807a030})を参照してください。]
