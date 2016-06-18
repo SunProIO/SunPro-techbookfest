@@ -6,7 +6,7 @@
 リード文をここに書く
 //}
 
-== 自己紹介
+== @<tt>{:about_me:}
 
 こんにちは、SunProメンバーの1人、hideo54です。灘高校で高校2年生をしながら、いろいろ遊んでいます。
 最近だとiOSやWebで動くようなプログラミングを好んでいます。
@@ -24,7 +24,7 @@
 
 ===[/column]
 
-== はじめに
+== @<tt>{:introduction:}
 
 さて、本題に入りたいと思います。
 
@@ -35,7 +35,7 @@
 
 個人的に、簡単な反応であればなるべくReactionで済ませたいという気持ちがありますので、頻繁に使うこの面倒なReactionをなんとか楽にできないかと考えていた結果、@<strong>{Reaction専用キーボードを作る}という発想に至りました。
 
-== 仕様を決める
+== @<tt>{:plan:}
 
 「キーボード 自作」とかでググればやたらArduinoでしてやったぜ記事が出てくるのですが、Arduinoに疎くRaspberry Piに慣れている身なので、Raspberry Piでなんとかできないかと考えました。(そのうちちゃんとArduinoも触っておきたい…。)
 
@@ -52,6 +52,6 @@ Slackメッセージの送受信には、Real Time Messaging API@<fn>{rtm-doc}�
 
 //footnote[rtm-doc][@<href>{https://api.slack.com/rtm}]
 
-== おわりに
+== @<tt>{:postscript:}
 
 これは文章でした。
