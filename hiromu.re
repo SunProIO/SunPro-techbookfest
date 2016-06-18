@@ -1,5 +1,7 @@
 = ディープラーニングでご飯を作ってみる
 
+//raw[|latex|\\chapterauthor{hiromu}]
+
 == はじめに
 
 こんにちは。SunProメンバーのhiromu(@hiromu1996)です。
@@ -129,7 +131,7 @@ $ @<b>{source activate tensorflow}
 さて、早速使ってみましょう。
 //cmd{
 $ @<b>{python}
-Python 2.7.11 |Continuum Analytics, Inc.| (default, Dec  6 2015, 18:08:32) 
+Python 2.7.11 |Continuum Analytics, Inc.| (default, Dec  6 2015, 18:08:32)
    <略>
 >>> import tensorflow
 Traceback (most recent call last):
@@ -185,10 +187,10 @@ $ @<b>{rpm2cpio libstdc++-4.8.5-4.el7.x86_64.rpm | cpio -idv}
 
 //cmd{
 $ @<b>{/home/hiromu/miniconda2/envs/tensorflow/lib64/ld-linux-x86-64.so.2 --library-path /home/hiromu/miniconda2/envs/tensorflow/lib64:/home/hiromu/miniconda2/envs/tensorflow/usr/lib64 /home/hiromu/miniconda2/envs/tensorflow/bin/python}
-Python 2.7.11 |Continuum Analytics, Inc.| (default, Dec  6 2015, 18:08:32) 
+Python 2.7.11 |Continuum Analytics, Inc.| (default, Dec  6 2015, 18:08:32)
    <略>
 >>> import tensorflow
->>> 
+>>>
 //}
 
 これで、正しく実行することができました。
@@ -364,4 +366,3 @@ Epochが進むにつれ、皿、目玉焼き、魚介類、野菜というよう
 
 また、筆者自身も、ディープラーニングやTensorflowの初学者ですので、怪しい点や疑問点などありましたら、
 @hiromu1996かhiromu1996[at]gmail.comまでご連絡ください。
-
