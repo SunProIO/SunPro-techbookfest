@@ -90,9 +90,11 @@ GANとの違いを細かく説明しようとすると、畳み込みニュー�
 幸いなことにAnacondaというPythonとその有名なパッケージ(numpyやscipyなども含まれる)を一括で構築してくれるシステムがあります。
 しかしながら、Anacondaだけでディスク容量を3GBも使用してしまうので、そのミニマル版であるminicondaを使うこととします。
 
-minicondaのダウンロードページ(@<href>{http://conda.pydata.org/miniconda.html})から、今回はPython 2.7 Linux 64-bitを選びました。
+minicondaのダウンロードページ@<fn>{miniconda-url}から、今回はPython 2.7 Linux 64-bitを選びました。
 シェルスクリプトをダウンロードして実行するだけなので簡単です。
 途中でライセンスへの同意や、インストールディレクトリの確認を求められますが、基本はデフォルトのままで問題ありません。
+
+//footnote[miniconda-url][@<href>{http://conda.pydata.org/miniconda.html}]
 
 //cmd{
 # インストールスクリプトをダウンロードする
@@ -110,7 +112,9 @@ $ export PATH="/home/hiromu/miniconda2/bin:$PATH"
 
 === Tensorflowのインストール
 
-Pythonの環境が整えば、あとはTensorflowの公式ドキュメント(@<href>{https://www.tensorflow.org/versions/r0.9/get_started/os_setup.html#anaconda-installation})通りにインストールすることができます。
+Pythonの環境が整えば、あとはTensorflowの公式ドキュメント@<fn>{tensorflow-url}通りにインストールすることができます。
+
+//footnote[tensorflow-url][@<href>{https://www.tensorflow.org/versions/r0.9/get_started/os_setup.html#anaconda-installation}]
 
 まずはminicondaでTensorflow用の環境を用意し、あとはpipでインストールするだけです。
 //cmd{
@@ -154,7 +158,9 @@ ImportError: /lib64/libc.so.6: version `GLIBC_2.17' not found (required by /home
 === glibcの展開
 
 まずは、glibc-2.17のパッケージを探すところから始めましょう。
-今回は、rpmfind.netに掲載されていたCentOS 7.2向けのglibc-2.17(@<href>{http://rpmfind.net/linux/RPM/centos/updates/7.2.1511/x86_64/Packages/glibc-2.17-106.el7_2.6.x86_64.html})を使いました。
+今回は、rpmfind.netに掲載されていたCentOS 7.2向けのglibc-2.17@<fn>{glibc-url}を使いました。
+
+//footnote[glibc-url][@<href>{http://rpmfind.net/linux/RPM/centos/updates/7.2.1511/x86_64/Packages/glibc-2.17-106.el7_2.6.x86_64.html}]
 
 次に、このrpmを展開します。
 以下の例では、minicondaがTensorflowの環境として用意したディレクトリを使用していますが、別のディレクトリを使用しても構いません。
@@ -171,7 +177,9 @@ $ rpm2cpio glibc-2.17-106.el7_2.6.x86_64.rpm | cpio -idv
 //}
 
 また、Tensorflowはglibc++-3.4.14も必要とするため、これも展開します。
-パッケージは、同様にCentOS 7.2向けのlibstdc++-4.8.5(@<href>{https://rpmfind.net/linux/RPM/centos/7.2.1511/x86_64/Packages/libstdc++-4.8.5-4.el7.x86_64.html})を使いました。
+パッケージは、同様にCentOS 7.2向けのlibstdc++-4.8.5@<fn>{libstdc-url}を使いました。
+
+//footnote[libstdc-url][@<href>{https://rpmfind.net/linux/RPM/centos/7.2.1511/x86_64/Packages/libstdc++-4.8.5-4.el7.x86_64.html}]
 
 //cmd{
 # libstdc++のパッケージをダウンロードする
@@ -220,12 +228,16 @@ DCGANを動かす前に、サンプルとなるデータセットを用意する
 === UEC FOOD-256
 
 UEC FOOD-256は電気通信大学の柳井研究室が公開しているデータセットで、もともとはご飯の画像認識@<bib>{kawano}のために作られたものです。
-こちらのWebページ(@<href>{http://foodcam.mobi/dataset256.html})で公開されています。
+こちらのWebページ@<fn>{food256-url}で公開されています。
+
+//footnote[food256-url][@<href>{http://foodcam.mobi/dataset256.html}]
 
 FOOD-256はその名の通り、256種類の食べ物についての画像を集めたもので、
-ラーメンからたい焼き、ビールまで様々な種類があります(@<href>{http://foodcam.mobi/gallery.cgi}でプレビュー可能)。
+ラーメンからたい焼き、ビールまで様々な種類があります@<fn>{food256-preview}。
 また、特徴的なのは、焼魚定食といった複数の料理が集まった画像もあり、
 焼魚や味噌汁、白飯といったそれぞれの要素がどこにあるのかという座標情報も入っています。
+
+//footnote[food256-preview][@<href>{http://foodcam.mobi/gallery.cgi}でプレビュー可能]
 
 しかし、DCGANで生成するとなると、サンプルデータに一品のものと定食のような複数品のものが混ざっていると複雑性が増して、
 学習が難しくなるのではないかと考えられます。
@@ -234,7 +246,9 @@ FOOD-256はその名の通り、256種類の食べ物についての画像を集
 === PFID
 
 Pittsburgh Fast-Food Image DatasetはIntel Labs Pittsburghが公開しているデータセットで、こちらはご飯を対象とした画像特徴量のベンチマーク@<bib>{mei}のために作られたものです。
-こちらのWebページ(@<href>{http://pfid.rit.albany.edu/})で公開されています。
+こちらのWebページ@<fn>{pfid-url}で公開されています。
+
+//footnote[pfid-url][@<href>{http://pfid.rit.albany.edu/}]
 
 こちらは61種類の食べ物についての画像を集めたものですが、
 その名の通り、すべてファストフード店の商品の写真となっています。
@@ -249,7 +263,9 @@ Pittsburgh Fast-Food Image DatasetはIntel Labs Pittsburghが公開している�
 === Food 101
 
 Food 101はチューリッヒ工科大学のコンピュータビジョン研究室が公開しているデータセットで、こちらはご飯の画像分類@<bib>{bossard}のために作られたものです。
-こちらのWebページ(@<href>{https://www.vision.ee.ethz.ch/datasets_extra/food-101/})で公開されています。
+こちらのWebページ@<fn>{food101-url}で公開されています。
+
+//footnote[food101-url][@<href>{https://www.vision.ee.ethz.ch/datasets_extra/food-101/}]
 
 こちらは101種類の食べ物についての画像を集めたものですが、
 それぞれの種類ごとになんと1000枚ずつ、合計101000枚の画像が含まれています。
@@ -302,8 +318,10 @@ $ rm 1340977.jpg 1375816.jpg 3787908.jpg
 
 ついに、DCGANによる画像生成にチャレンジしてみましょう。
 
-今回は、Githubで公開されているTensorflow向けの実装(@<href>{https://github.com/carpedm20/DCGAN-tensorflow})を利用します。
+今回は、Githubで公開されているTensorflow向けの実装@<fn>{dcgan-url}を利用します。
 ソースコードを展開したら、dataディレクトリを作り、その中にfood101というディレクトリ名で先ほど用意した画像を配置します。
+
+//footnote[dcgan-url][@<href>{https://github.com/carpedm20/DCGAN-tensorflow}]
 
 === ログ保存場所の変更
 
@@ -312,7 +330,9 @@ $ rm 1340977.jpg 1375816.jpg 3787908.jpg
 すぐにホームディレクトリのquotaを突破してしまうからです。
 ですので、場合によっては消えてしまってもなんとかなるログファイルは、tmpfsにでも突っ込んでおきましょう。
 
-変更のためのパッチは、紙面の都合上、こちら(@<href>{https://gist.github.com/hiromu/cce292b0dd17331f475e5c0b72ecc6e6})で公開しております。
+変更のためのパッチは、紙面の都合上、Gist@<fn>{gist-url}で公開しております。
+
+//footnote[gist-url][@<href>{https://gist.github.com/hiromu/cce292b0dd17331f475e5c0b72ecc6e6}]
 
 === 学習
 
