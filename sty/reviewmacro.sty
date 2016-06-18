@@ -30,9 +30,9 @@
 %% from review-pdfmaker
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\lhead{\gtfamily\sffamily\bfseries\upshape \leftmark}
-\chead{}
-\rhead{\gtfamily\sffamily\bfseries\upshape \thepage}
+\fancyhead[LO,RE]{\gtfamily\sffamily\bfseries\upshape \thepage}
+\fancyhead[RO,LE]{\gtfamily\sffamily\bfseries\upshape \leftmark}
+\fancyfoot{}
 \renewcommand{\sectionmark}[1]{\markright{\thesection~#1}{}}
 \renewcommand{\chaptermark}[1]{\markboth{\prechaptername\ \thechapter\ \postchaptername~#1}{}}
 \renewcommand{\headfont}{\gtfamily\sffamily\bfseries}
