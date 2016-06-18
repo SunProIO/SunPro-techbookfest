@@ -57,7 +57,7 @@
 共著者として名を連ねていますが、彼の協力なしでは本記事は恐ろしくクオリティの低いものになったであろうことは疑いようがなく、
 その貢献度に関しては計り知れません。どうぞお見知り置きください。
 
-//footnote[mine-url][HP: @<href>{http://mine02c4.nagoya/}, Twitter: @<href>{@mine_studio, https://twitter.com/mine_studio}]
+//footnote[mine-url][HP: @<href>{http://mine02c4.nagoya/}, Twitter: @<href>{https://twitter.com/mine_studio, @mine_studio}]
 
 === シチュエーション
 
