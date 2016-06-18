@@ -96,13 +96,13 @@ minicondaのダウンロードページ(@<href>{http://conda.pydata.org/minicond
 
 //cmd{
 # インストールスクリプトをダウンロードする
-$ @<b>{https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh}
+$ https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
 
 # インストールスクリプトを実行する
-$ @<b>{bash Miniconda2-latest-Linux-x86_64.sh}
+$ bash Miniconda2-latest-Linux-x86_64.sh
 
 # PATHに追加します
-$ @<b>{export PATH="/home/hiromu/miniconda2/bin:$PATH"}
+$ export PATH="/home/hiromu/miniconda2/bin:$PATH"
 //}
 
 本節以降、@<code>{/home/hiromu/miniconda2}にminicondaをインストールしたものとして進めますので、
@@ -115,22 +115,22 @@ Pythonの環境が整えば、あとはTensorflowの公式ドキュメント(@<h
 まずはminicondaでTensorflow用の環境を用意し、あとはpipでインストールするだけです。
 //cmd{
 # Tensorflow用の環境のためにopensslやzlibなどが展開される
-$ @<b>{conda create -n tensorflow python=2.7}
+$ conda create -n tensorflow python=2.7
 
 # Tensorflow用の環境に入る
-$ @<b>{source activate tensorflow}
+$ source activate tensorflow
 
 # 今回はLinux 64-bit, CPU only, Python 2.7のパッケージを使用 (最新のURLや別バージョンについてはをドキュメントページを確認してください)
-(tensorflow)$ @<b>{export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.9.0rc0-cp27-none-linux_x86_64.whl}
+(tensorflow)$ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.9.0rc0-cp27-none-linux_x86_64.whl
 
 # Tensorflowのインストールの開始
-(tensorflow)$ @<b>{pip install --upgrade $TF_BINARY_URL}
+(tensorflow)$ pip install --upgrade $TF_BINARY_URL
 //}
 
 これでインストールは完了です。
 さて、早速使ってみましょう。
 //cmd{
-$ @<b>{python}
+$ python
 Python 2.7.11 |Continuum Analytics, Inc.| (default, Dec  6 2015, 18:08:32)
    <略>
 >>> import tensorflow
@@ -161,13 +161,13 @@ ImportError: /lib64/libc.so.6: version `GLIBC_2.17' not found (required by /home
 
 //cmd{
 # 展開用のディレクトリを作る(以降、適当に読み替えてください)
-$ @<b>{cd /home/hiromu/miniconda2/envs/tensorflow}
+$ cd /home/hiromu/miniconda2/envs/tensorflow
 
 # glibcのパッケージをダウンロードする
-$ @<b>{wget ftp://fr2.rpmfind.net/linux/centos/7.2.1511/updates/x86_64/Packages/glibc-2.17-106.el7_2.6.x86_64.rpm}
+$ wget ftp://fr2.rpmfind.net/linux/centos/7.2.1511/updates/x86_64/Packages/glibc-2.17-106.el7_2.6.x86_64.rpm
 
 # 展開する
-$ @<b>{rpm2cpio glibc-2.17-106.el7_2.6.x86_64.rpm | cpio -idv}
+$ rpm2cpio glibc-2.17-106.el7_2.6.x86_64.rpm | cpio -idv
 //}
 
 また、Tensorflowはglibc++-3.4.14も必要とするため、これも展開します。
@@ -175,10 +175,10 @@ $ @<b>{rpm2cpio glibc-2.17-106.el7_2.6.x86_64.rpm | cpio -idv}
 
 //cmd{
 # libstdc++のパッケージをダウンロードする
-$ @<b>{wget ftp://fr2.rpmfind.net/linux/centos/7.2.1511/os/x86_64/Packages/libstdc++-4.8.5-4.el7.x86_64.rpm}
+$ wget ftp://fr2.rpmfind.net/linux/centos/7.2.1511/os/x86_64/Packages/libstdc++-4.8.5-4.el7.x86_64.rpm
 
 # 展開する
-$ @<b>{rpm2cpio libstdc++-4.8.5-4.el7.x86_64.rpm | cpio -idv}
+$ rpm2cpio libstdc++-4.8.5-4.el7.x86_64.rpm | cpio -idv
 //}
 
 これで、必要なパッケージは揃いました。
@@ -186,7 +186,7 @@ $ @<b>{rpm2cpio libstdc++-4.8.5-4.el7.x86_64.rpm | cpio -idv}
 ただし、展開したライブラリを使用するために少し特殊な呼び出し方をする必要があります。
 
 //cmd{
-$ @<b>{/home/hiromu/miniconda2/envs/tensorflow/lib64/ld-linux-x86-64.so.2 --library-path /home/hiromu/miniconda2/envs/tensorflow/lib64:/home/hiromu/miniconda2/envs/tensorflow/usr/lib64 /home/hiromu/miniconda2/envs/tensorflow/bin/python}
+$ /home/hiromu/miniconda2/envs/tensorflow/lib64/ld-linux-x86-64.so.2 --library-path /home/hiromu/miniconda2/envs/tensorflow/lib64:/home/hiromu/miniconda2/envs/tensorflow/usr/lib64 /home/hiromu/miniconda2/envs/tensorflow/bin/python
 Python 2.7.11 |Continuum Analytics, Inc.| (default, Dec  6 2015, 18:08:32)
    <略>
 >>> import tensorflow
@@ -197,7 +197,7 @@ Python 2.7.11 |Continuum Analytics, Inc.| (default, Dec  6 2015, 18:08:32)
 次回以降の呼び出しを省略するために、aliasを作っておきましょう。
 
 //cmd{
-$ @<b>{alias tfpy="/home/hiromu/miniconda2/envs/tensorflow/lib64/ld-linux-x86-64.so.2 --library-path /home/hiromu/miniconda2/envs/tensorflow/lib64:/home/hiromu/miniconda2/envs/tensorflow/usr/lib64 /home/hiromu/miniconda2/envs/tensorflow/bin/python"}
+$ alias tfpy="/home/hiromu/miniconda2/envs/tensorflow/lib64/ld-linux-x86-64.so.2 --library-path /home/hiromu/miniconda2/envs/tensorflow/lib64:/home/hiromu/miniconda2/envs/tensorflow/usr/lib64 /home/hiromu/miniconda2/envs/tensorflow/bin/python"
 //}
 
 === 追加のライブラリ
@@ -206,10 +206,10 @@ $ @<b>{alias tfpy="/home/hiromu/miniconda2/envs/tensorflow/lib64/ld-linux-x86-64
 
 //cmd{
 # scipyはビルド済みパッケージが使えるのでpipからインストール
-$ @<b>{pip install scipy}
+$ pip install scipy
 
 # Pillowはビルド済みパッケージが使えないのでcondaからインストール
-$ @<b>{conda install pillow}
+$ conda install pillow
 //}
 
 == ご飯データセット
@@ -320,10 +320,10 @@ $ rm 1340977.jpg 1375816.jpg 3787908.jpg
 
 //cmd{
 # /tmpにディレクトリを作る
-$ @<b>{mktemp -d /tmp/tf.XXXXX}
+$ mktemp -d /tmp/tf.XXXXX
 /tmp/tf.gq5vZ
 
-$ @<b>{python main.py --dataset food101 --is_train True --log_dir /tmp/tf.gq5vZ}
+$ python main.py --dataset food101 --is_train True --log_dir /tmp/tf.gq5vZ
 //}
 
 あとはこのままひたすら放置するだけです。
@@ -335,7 +335,7 @@ $ @<b>{python main.py --dataset food101 --is_train True --log_dir /tmp/tf.gq5vZ}
 Tensorboardでは、d_lossやg_lossの変化のグラフや、ネットワークの構造などを見ることができます。
 
 //cmd{
-$ @<b>{tfpy /home/hiromu/miniconda2/envs/tensorflow/bin/tensorboard --logdir=/tmp/tf.gq5vZ}
+$ tfpy /home/hiromu/miniconda2/envs/tensorflow/bin/tensorboard --logdir=/tmp/tf.gq5vZ
 //}
 
 === 学習結果
