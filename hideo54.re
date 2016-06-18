@@ -10,7 +10,9 @@
 
 こんにちは、SunProメンバーの1人、hideo54です。灘高校で高校2年生をしながら、いろいろ遊んでいます。
 最近だとiOSやWebで動くようなプログラミングを好んでいます。
-あと、この記事の内容も該当しますが、工作とプログラミングを絡めたい時にはRaspberry Piを愛用しています。(そういえば@<href>{https://sunpro.io/c89/pub/hideo/ch01, 前回のSunPro会誌でもRPiを使って遊ぶ記事を書きました}。無料公開していますのでぜひ。)
+あと、この記事の内容も該当しますが、工作とプログラミングを絡めたい時にはRaspberry Piを愛用しています。(そういえば, 前回のSunPro会誌でもRPiを使って遊ぶ記事を書きました@<fn>{sunpro-hideo}。無料公開していますのでぜひ。)
+
+//footnote[sunpro-hideo][@<href>{https://sunpro.io/c89/pub/hideo/ch01}]
 
 以下連絡先です。何かあればどぞー
 
