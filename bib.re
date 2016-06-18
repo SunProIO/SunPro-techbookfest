@@ -1,3 +1,5 @@
+= 参考文献
+
 //bibpaper[goodfellow][Goodfellow, Ian, et al. Generative adversarial nets. Advances in Neural Information Processing Systems, 2014.]
 
 //bibpaper[radford][Radford, Alec, Metz, Luke, and Chintala, Soumith. Unsupervised representation learning with deep convolutional generative adversarial networks. International Conf. on Learning Representations, 2016.]
