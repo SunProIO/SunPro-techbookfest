@@ -1,6 +1,6 @@
 = インターネットの1秒がもし1年だったら(仮)
 
-//raw[|latex|\\chapterauthor{hakatashi・Mine}]
+//raw[|latex|\\chapterauthor{hakatashi・Mine02C4}]
 
 //lead{
 2016年、インターネットが日本中のあらゆる人間に行き渡るようになってから、
@@ -49,7 +49,7 @@
 === 共著者について
 
 本記事の筆頭筆者はhakatashiですが、今回の記事を書くにあたり、
-同じSunProメンバーでありネットワークスペシャリスト取得者のMine@<fn>{mine-url}から、
+同じSunProメンバーでありネットワークスペシャリスト取得者のMine02C4@<fn>{mine-url}から、
 企画段階からの多大な協力と大幅な加筆を得ることができました。
 
 ネットワーク知識不足のhakatashiにパケット解析を指南し、
