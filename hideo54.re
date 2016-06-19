@@ -63,12 +63,19 @@ Reactionボタンを作ります。今回使用するものは以下のとおり
 
 ブレッドボードに各スイッチを刺し、抵抗を通すようにして適当に配線します。
 
-以下の図は配線例です。狭いブレッドボードを使ったので、配線がややわかりにくい感がありますが、許してください。
+@<img>{wiring}は配線例です。狭いブレッドボードを使ったので、配線がややわかりにくい感がありますが、許してください。
 
 //image[wiring][配線例]{
 //}
 
-図では、11, 13, 15, 16番目のピンをそれぞれのスイッチに割り当てています。次章のソースコードでも、この配線を前提としたものを掲載しています。
+@<img>{wiring}では、11, 13, 15, 16番目のピンをそれぞれのスイッチに割り当てています。次章のソースコードでも、この配線を前提としたものを掲載しています。
+
+実物の写真も用意しました。こんな感じです。
+
+//image[pic][実物写真]{
+//}
+
+(ボタンの様子が見えやすいように、配線図と上下が逆になるように撮りました。)
 
 == @<tt>{:code:}
 
@@ -93,12 +100,11 @@ sc = SlackClient(token)
 reactions = {11:'+1', 13:'weary', 15:'wakaru', 16:'uke'}
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(list(reactions.keys()), GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-def add_selected_reactions(sc, channel_id, timestamp):
+def add_selected_reactions(sc, channel_id, ts):
     for button in reactions.keys():
         if GPIO.input(button):
             reaction = reactions[button]
-            sc.api_call('reactions.add', name=reaction, channel=channel_id, \
-                timestamp=timestamp)
+            sc.api_call('reactions.add', name=reaction, channel=channel_id, timestamp=ts)
 
 if sc.rtm_connect():
     latest_message = None
@@ -123,10 +129,15 @@ else:
 4行目のtokenは、OAuth Test Tokens@<fn>{test-token}から取得します。
 10行目のreactionsは、keyに使用するピン番号、valueに対応するEmojiの名前をとる辞書です。ここでは、僕が所属している灘校パソコン研究部@<fn>{npca}のSlackにあるReactionのうち、この4つがあればなんとかなるかな、というものを選んでいます。
 
+Reactionの追加は、python-slackclientのapi_callメソッドを使用しまんま該当するSlack API@<fn>{api}を叩いています(17行目)。
+
 //footnote[test-token][@<href>{https://api.slack.com/docs/oauth-test-tokens}]
 //footnote[npca][@<href>{http://www.npca.jp/}]
+//footnote[api][@<href>{https://api.slack.com/methods/reactions.add}]
 
-実行すると、確かにボタンを押した時に、最新の投稿にReactionを付けられるようになることが確認できます!
+これをRaspberry Pi上で実行しておけば、ボタンが押されていると、そのボタンに対応したReactionを付加するようになります!(ただしインターネット接続が必要)
+
+ボタンが押されているかどうかを1秒毎に見ているので、最大で1秒押し続ける必要がありますが、叩いているのは追加メソッドなので、複数命令が送られてもReactionが取り消されることはないようになっています。
 
 == @<tt>{:postscript:}
 
