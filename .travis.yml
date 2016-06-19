@@ -6,6 +6,7 @@ dist: trusty
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y texlive-lang-cjk texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra --no-install-recommends
+  - kanji-config-updmap status
 script:
   - bundle exec rake all 0<&-
 after_success:
