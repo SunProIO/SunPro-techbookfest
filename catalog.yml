@@ -2,9 +2,9 @@ PREDEF:
   - intro.re
 
 CHAPS:
-  - hideo54.re
-  - hakatashi.re
   - hiromu.re
+  - hakatashi.re
+  - hideo54.re
 
 APPENDIX:
   - bib.re
