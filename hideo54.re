@@ -48,10 +48,97 @@
     @<comment>{時間なさそうなので、もし間に合えばということで…}
     * 特定のボタンが押されたら、そのボタンに割り当てられたReactionを送信
 
-Slackメッセージの送受信には、Real Time Messaging API@<fn>{rtm-doc}を使います。
+Slackメッセージの送信には、Real Time Messaging API@<fn>{rtm-doc}を使います。
 
 //footnote[rtm-doc][@<href>{https://api.slack.com/rtm}]
 
+== @<tt>{:design:}
+
+Reactionボタンを作ります。今回使用するものは以下のとおりです:
+
+    * Raspberry Pi
+    * SDカード
+    * ブレッドボード
+    * 押しボタンスイッチ(1回路1接点) 4つ
+    * 抵抗
+
+まず、SDカードにRaspbian Jessieをインストール@<fn>{raspbian-install}し、Raspberry Piに入れて起動します。JessieベースのRaspbianは、Wheezyと違ってGPIOの制御にroot権限が必要ないという長所もあるのです。
+
+//footnote[raspbian-install][@<href>{https://www.raspberrypi.org/downloads/raspbian/}にDLリンクがあります。インストール方法は適当にぐぐってください。]
+
+ブレッドボードに各スイッチを刺し、抵抗を通すようにして適当に配線します。
+
+以下の図は配線例です。狭いブレッドボードを使ったので、配線がややわかりにくい感がありますが、許してください。
+
+//image[wiring][配線例]{
+//}
+
+図では、11, 13, 15, 16番目のピンをそれぞれのスイッチに割り当てています。次章のソースコードでも、この配線を前提としたものを掲載しています。
+
+== @<tt>{:code:}
+
+実装めんどくさいな〜、と思うところですが、ありがたいことに有志が作ったライブラリがたくさんあります@<fn>{library}。(感謝)
+//footnote[library][@<href>{https://api.slack.com/community}]
+
+今回は、僕が一番手馴れているPythonで書きたいと思ったので、python-slackclient@<fn>{python-slackclient}を使うことにしました。pipなどでインストールすると良いでしょう。
+//footnote[python-slackclient][@<href>{https://github.com/slackhq/python-slackclient}]
+
+というわけで書いたコードがこちらです。
+
+//emlistnum[ボタンを押すとReactionが送信されるコード(Python3)][python]{
+import time
+import RPi.GPIO as GPIO
+from slackclient import SlackClient
+
+# Slack
+token = 'xoxp-1234567890a-1234567890a-1234567890a-1234567890'
+sc = SlackClient(token)
+
+# Buttons
+reactions = {11:'+1', 13:'weary', 15:'wakaru', 16:'uke'}
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(list(reactions.keys()), GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+def add_selected_reactions(sc, channel_id, timestamp):
+    for button in reactions.keys():
+        if GPIO.input(button):
+            reaction = reactions[button]
+            sc.api_call('reactions.add', name=reaction, channel=channel_id, \
+                timestamp=timestamp)
+
+if sc.rtm_connect():
+    latest_message = None
+    while True:
+        res = sc.rtm_read()
+        for item in res:
+            item_type = item.get('type')
+            if item_type == 'hello':
+                print('Connected successfully.')
+            elif item_type == 'message':
+                if latest_message != item:
+                    latest_message = item
+            else:
+                pass
+        if latest_message is not None:
+            add_selected_reactions(sc, latest_message['channel'], latest_message['ts'])
+        time.sleep(1)
+else:
+    print('Connection failed.')
+//}
+
+4行目のtokenは、OAuth Test Tokens@<fn>{test-token}から取得します。
+10行目のreactionsは、keyに使用するピン番号、valueに対応するEmojiの名前をとる辞書です。
+
+//footnote[test-token][@<href>{https://api.slack.com/docs/oauth-test-tokens}]
+
+実行すると、確かにボタンを押した時に、最新の投稿にReactionを付けられるようになることが確認できます!
+
 == @<tt>{:postscript:}
 
-これは文章でした。
+と、まあ、以上です。
+実際は、さらにRPiにディスプレイ付けて、受信したメッセージを選択してReactionを付けるなど、より実用的なものを作りたかったのですが、記事の締め切り直前に作業を始めたため、さすがにそこまでは行きませんでした…。
+
+ここまで読んでくださってありがとうございました。曰く「かなり許されない部類」のギリギリ提出になってしまったものの記事を待ち続けてくれた編集長のhakatashiにも感謝しています…!
+
+余談ですが、hakatashiにSlackで「hideoの記事、機械学習でSlackのメッセージに自動でReactionつけるみたいな記事かと思ったら全然違った」と言われました。それも一瞬考えていたので、またそのうちやりたいですね。
+
+では。
