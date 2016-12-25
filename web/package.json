@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "build": "pug index.pug"
+    },
+    "dependencies": {
+        "pug-cli": "^1.0.0-alpha6"
+    }
+}

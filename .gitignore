@@ -5,6 +5,9 @@
 *.tex
 *.mobi
 
+web/images/
+web/node_modules/
+
 Gemfile.lock
 
 kindlegen
