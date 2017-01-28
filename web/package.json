@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "build": "pug index.pug"
+        "build": "pug -O hakatashi.js -p beautiful-hexo/layout/page.jade -P < beautiful-hexo/layout/page.jade > hakatashi.html"
     },
     "dependencies": {
         "pug-cli": "^1.0.0-alpha6"
