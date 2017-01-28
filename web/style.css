@@ -1,7 +1,23 @@
-body, h1, h2, h3, h4, h5, h6 {
+body, h1, h2, h3, h4, h5, h6, .navbar-custom {
 	font-family: "Noto Sans CJK JP", "Meiryo", "メイリオ", "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "游ゴシック体", "YuGothic", "游ゴシック", "Yu Gothic", "IPAゴシック", "IPAGothic", "Arial", "Helvetica", sans-serif;
 }
 
-h1 {
+p {
+	word-wrap: break-word;
+}
+
+.noteref {
+	vertical-align: super;
+	font-size: 0.7em;
+}
+
+.intro-header .page-heading h1 {
+	font-size: 40px;
 	white-space: nowrap;
+}
+
+@media only screen and (min-width: 768px) {
+	.intro-header .page-heading h1 {
+		font-size: 70px;
+	}
 }

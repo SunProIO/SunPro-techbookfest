@@ -1,5 +1,9 @@
   {
-    config: {},
+    config: {
+      title: 'SunPro 技術書典',
+      author: 'SunPro',
+      email: 'admin@sunpro.io',
+    },
     page: {
       title: 'もし<wbr>インターネットの<wbr>1秒が<wbr>1年だったら',
       subtitle: 'hakatashi',
@@ -8,6 +12,7 @@
     theme: {
       'navbar-links': [],
       footer: [],
+      avatar: '/../../favicon.png',
       comment: {
         enable: false,
       },
@@ -17,7 +22,7 @@
     },
     url_for: (path) => {
       if (path === undefined) {
-        return '';
+        return './';
       } else {
         return `beautiful-hexo/source${path}`;
       }

@@ -11,8 +11,11 @@ footer
                                         i.fa.fa-circle.fa-stack-2x
                                         i.fa.fa-stack-1x.fa-inverse(class=item.icon)
                 - var year = new Date().getFullYear();
-                p.copyright.text-muted.
-                    © #{config.author} • #{year} • #[a(href="mailto:" + config.email)= config.email]
+                p.copyright.text-muted
+                    a(href="https://creativecommons.org/licenses/by/4.0/deed.ja", target="_blank")
+                        img(src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg", alt="CC BY-SA 4.0")
+                    br
+                    | © #{config.author} • #{year} • #[a(href="mailto:" + config.email)= config.email]
 
                 p.theme-by.text-muted.
                     Theme by
