@@ -48,6 +48,11 @@ p {
 	margin-left: 0.3em;
 }
 
+.pdf a {
+	color: #cc1818;
+	font-weight: bold;
+}
+
 .blog-post > h1 {
 	display: none;
 }
@@ -74,4 +79,35 @@ p {
 
 .navbar-custom .avatar-container  .avatar-img-border {
 	box-shadow: none;
+}
+
+.intro-header.big-img {
+	background-position-y: 0%;
+	animation: animate-header 60s infinite alternate;
+}
+
+.intro-header.big-img::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+@keyframes animate-header {
+	from { background-position-y: 0%; }
+	to { background-position-y: 100%; }
+}
+
+@media only screen and (max-width: 365px) {
+	.intro-header.big-img .page-heading, .intro-header.big-img .post-heading {
+		display: block;
+		padding: 2em 0;
+	}
+
+	.intro-header.big-img {
+		height: auto;
+	}
 }

@@ -8,6 +8,12 @@ block header
                 if page.subtitle
                     hr.small
                     span.page-subheading!= page.subtitle
+        .pdf.text-center
+            a(href=page.pdf.link)
+                span.fa-stack.fa-lg
+                    i.fa.fa-circle.fa-stack-2x
+                    i.fa.fa-stack-1x.fa-inverse.fa-file-pdf-o
+                = `PDF版 (${page.pdf.size}MB)`
         .links
             if page.prev
                 .link-prev
