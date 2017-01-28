@@ -48,8 +48,22 @@ p {
 	margin-left: 0.3em;
 }
 
+.downloads > * {
+	display: inline-block;
+}
+
 .pdf a {
 	color: #cc1818;
+	font-weight: bold;
+}
+
+.epub a {
+	color: #1856cc;
+	font-weight: bold;
+}
+
+.mobi a {
+	color: #a3620b;
 	font-weight: bold;
 }
 
