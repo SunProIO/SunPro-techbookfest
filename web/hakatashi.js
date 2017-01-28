@@ -10,6 +10,14 @@
     title: 'もし<wbr>インターネットの<wbr>1秒が<wbr>1年だったら',
     subtitle: 'hakatashi / Mine02C4',
     content: fs.readFileSync('../hakatashi.html'),
+    prev: {
+      link: 'hiromu.html',
+      title: 'ディープラーニングでご飯を作ってみる',
+    },
+    next: {
+      link: 'hideo54.html',
+      title: 'まだReactionで消耗してるの?',
+    },
   },
   theme: {
     'navbar-links': {

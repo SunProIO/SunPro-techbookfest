@@ -9,14 +9,16 @@ block header
                     hr.small
                     span.page-subheading!= page.subtitle
         .links
-            .link-prev
-                a(href="hiromu.html")
-                    i.fa.fa-arrow-left
-                    | ディープラーニングでご飯を作ってみる
-            .link-next
-                a(href="hideo.html")
-                    | まだReactionで消耗してるの?
-                    i.fa.fa-arrow-right
+            if page.prev
+                .link-prev
+                    a(href=page.prev.link)
+                        i.fa.fa-arrow-left
+                        = page.prev.title
+            if page.next
+                .link-next
+                    a(href=page.next.link)
+                        = page.next.title
+                        i.fa.fa-arrow-right
 
 block content
     .container

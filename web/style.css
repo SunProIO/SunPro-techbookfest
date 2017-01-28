@@ -57,6 +57,10 @@ p {
 	font-size: 0.7em;
 }
 
+.footnote {
+	font-size: 0.8em;
+}
+
 .intro-header .page-heading h1 {
 	font-size: 40px;
 	white-space: nowrap;

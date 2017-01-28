@@ -1,6 +1,9 @@
 {
     "scripts": {
-        "build": "pug -O hakatashi.js -p beautiful-hexo/layout/page.jade -P < beautiful-hexo/layout/page.jade > hakatashi.html"
+        "hakatashi": "pug -O hakatashi.js -p beautiful-hexo/layout/page.jade -P < beautiful-hexo/layout/page.jade > hakatashi.html",
+        "hiromu": "pug -O hiromu.js -p beautiful-hexo/layout/page.jade -P < beautiful-hexo/layout/page.jade > hiromu.html",
+        "hideo": "pug -O hideo54.js -p beautiful-hexo/layout/page.jade -P < beautiful-hexo/layout/page.jade > hideo54.html",
+        "build": "npm run hakatashi && npm run hiromu && npm run hideo"
     },
     "dependencies": {
         "pug-cli": "^1.0.0-alpha6"
