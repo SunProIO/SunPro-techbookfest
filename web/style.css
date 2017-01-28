@@ -67,6 +67,20 @@ p {
 	font-weight: bold;
 }
 
+.read-more {
+	text-align: right;
+}
+
+.read-more a {
+	display: inline-block;
+	background: #333;
+	color: white;
+	line-height: 2em;
+	padding: 0 1em;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
 .blog-post > h1 {
 	display: none;
 }
