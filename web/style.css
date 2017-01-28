@@ -1,9 +1,55 @@
 body, h1, h2, h3, h4, h5, h6, .navbar-custom {
-	font-family: "Noto Sans CJK JP", "Meiryo", "メイリオ", "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "游ゴシック体", "YuGothic", "游ゴシック", "Yu Gothic", "IPAゴシック", "IPAGothic", "Arial", "Helvetica", sans-serif;
+	font-family: /*"Noto Sans CJK JP",*/ "Meiryo", "メイリオ", "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "游ゴシック体", "YuGothic", "游ゴシック", "Yu Gothic", "IPAゴシック", "IPAGothic", "Arial", "Helvetica", sans-serif;
+}
+
+h1 > a, h2 > a, h3 > a, h4 > a {
+	transform: translateY(-80px);
+	display: block;
 }
 
 p {
 	word-wrap: break-word;
+}
+
+.links {
+	display: flex;
+	width: 1170px;
+	margin: 0 auto;
+	font-size: 16px;
+	font-weight: bold;
+	max-width: calc(100% - 30px);
+}
+
+@media only screen and (min-width: 768px) {
+	.links {
+		font-size: 24px;
+	}
+}
+
+.links a {
+	color: inherit;
+}
+
+.link-prev {
+	text-align: left;
+	flex: 1 0 0px;
+}
+
+.link-prev i {
+	margin-right: 0.3em;
+}
+
+.link-next {
+	text-align: right;
+	flex: 1 0 0px;
+}
+
+.link-next i {
+	margin-left: 0.3em;
+}
+
+.blog-post > h1 {
+	display: none;
 }
 
 .noteref {
@@ -20,4 +66,8 @@ p {
 	.intro-header .page-heading h1 {
 		font-size: 70px;
 	}
+}
+
+.navbar-custom .avatar-container  .avatar-img-border {
+	box-shadow: none;
 }
