@@ -14,3 +14,32 @@
 * [HTML版 (sunpro.io)](https://sunpro.io/techbookfest/)
 * [BOOTH](https://sunpro.booth.pm/items/277203)
 * [Releases](https://github.com/hakatashi/SunPro-techbookfest/releases)
+
+## 開発に必要なソフト
+
+* Ruby
+* LaTeX
+* Git LFS
+
+## インストール
+
+    cd /path/to/SunPro-techbookfest
+    git lfs pull
+    bundle install
+
+## ビルド
+
+### PDFをビルド
+
+    bundle exec rake pdf
+
+### EPUBをビルド
+
+    bundle exec rake epub
+
+### HTMLをビルド
+
+    bundle exec rake html_all
+    cd web
+    npm install
+    npm run build
