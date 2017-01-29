@@ -1,24 +1,16 @@
-# SunPro会誌 2016年技術書典版(仮) 開発用リポジトリ
+# SunPro会誌 2016技術書典
 
 [![Build Status][travis-image]][travis-url]
 
 [travis-image]: https://travis-ci.com/hakatashi/SunPro-techbookfest.svg?token=LBP6dMS3oXazpwBS3Fws&branch=master
 [travis-url]: https://travis-ci.com/hakatashi/SunPro-techbookfest
 
-## 開発方針
+[![](https://sunpro.io/techbookfest/cover.jpg)](https://sunpro.io/techbookfest/)
 
-**1次締切は6月13日24:00(JST)です**
+2016年6月25日に開催された技術書オンリーイベント「技術書典」にて頒布された、技術系よろず同人誌『SunPro会誌 2016技術書典』のソースリポジトリです。
 
-* ブランチは切らずmasterにガンガンpushしてください。
-    * `--force` はダメ
-* 新規記事を書き始める場合は、
-    1. 新しく`(自分のid).re`を作成し、
-    1. catarog.ymlのCHAPSの欄にそれを追加し、(順番は後で考えます)
-    1. config.ymlのautの欄に自分のidを追加してください。
-* ひとり1章です。複数ファイルへの分割も避けてください。
-    * 冬コミの時のような肥大化を避けるため、なるべくコンパクトな内容を心がけてください。
-    * 書くのが辛くなってきたらあとからERB化とか考えます。
-* コミットメッセージはそんなに気にしなくていいです。英語か日本語でお願いします。
-* 挿絵はimagesディレクトリの下に自分のidと同じフォルダを作成し、その中に置いてください。
-    * 書籍版では白黒で印刷されることに注意してください。
-* このリポジトリは初版発行から半年後に公開する予定なので公開できない情報をコミットしないでください。
+## 読む
+
+* [HTML版 (sunpro.io)](https://sunpro.io/techbookfest/)
+* [BOOTH](https://sunpro.booth.pm/items/277203)
+* [Releases](https://github.com/hakatashi/SunPro-techbookfest/releases)
