@@ -71,6 +71,10 @@ p {
 	margin-top: 0.5em;
 }
 
+.socials > * {
+	margin: 0 0.2em;
+}
+
 .read-more {
 	text-align: right;
 }
