@@ -6,6 +6,7 @@
     description: 'こんにちは。SunProメンバーのhiromu(@hiromu1996)です。今回は、世間で何でもできると話題になっているディープラーニングについて、本当は何でもできるのであれば、この空いたお腹も満たしてくれようということで、ディープラーニングでご飯を作ってみるということに挑戦してみました。……という出落ち記事です。実際は、ディープラーニングを使った画像生成アルゴリズムとして最近話題になっている「Deep Convolutional Generative Adversarial Network (DCGAN)」でご飯の画像を生成するということに挑戦してみました。',
   },
   page: {
+    url: 'hiromu.html',
     plain_title: 'ディープラーニングでご飯を作ってみる',
     title: 'ディープ<wbr>ラーニングで<wbr>ご飯を<wbr>作ってみる',
     subtitle: 'hiromu',

@@ -6,8 +6,11 @@ meta(name="author", content=config.author)
 link(rel="icon", type="image/png", href="favicon.png")
 
 title
-   block site_title
-       = `${page.plain_title} - ${config.title}`
+    block site_title
+        if page.plain_title !== ''
+            = `${page.plain_title} - ${config.title}`
+        else
+            = config.title
 block description
     meta(name="description", content=config.description)
 
@@ -23,6 +26,7 @@ if theme.googlefonts
         link(rel="stylesheet", href="//fonts.googleapis.com/css?family="+font)
 
 link(rel="stylesheet", href="style.css")
+link(rel="canonical", href=`https://sunpro.io/techbookfest/${page.url}`)
 
 //- TODO: support facebook
 //- Facebook OpenGraph tags
