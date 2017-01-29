@@ -1,0 +1,54 @@
+doctype
+html(lang='ja')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title SunPro会誌 2016 技術書典
+        link(rel='stylesheet', href='index.css')
+        link(rel='apple-touch-icon', sizes='57x57', href='/apple-touch-icon-57x57.png')
+        link(rel='apple-touch-icon', sizes='60x60', href='/apple-touch-icon-60x60.png')
+        link(rel='apple-touch-icon', sizes='72x72', href='/apple-touch-icon-72x72.png')
+        link(rel='apple-touch-icon', sizes='76x76', href='/apple-touch-icon-76x76.png')
+        link(rel='apple-touch-icon', sizes='114x114', href='/apple-touch-icon-114x114.png')
+        link(rel='apple-touch-icon', sizes='120x120', href='/apple-touch-icon-120x120.png')
+        link(rel='apple-touch-icon', sizes='144x144', href='/apple-touch-icon-144x144.png')
+        link(rel='apple-touch-icon', sizes='152x152', href='/apple-touch-icon-152x152.png')
+        link(rel='apple-touch-icon', sizes='180x180', href='/apple-touch-icon-180x180.png')
+        link(rel='icon', type='image/png', href='/favicon-32x32.png', sizes='32x32')
+        link(rel='icon', type='image/png', href='/android-chrome-192x192.png', sizes='192x192')
+        link(rel='icon', type='image/png', href='/favicon-96x96.png', sizes='96x96')
+        link(rel='icon', type='image/png', href='/favicon-16x16.png', sizes='16x16')
+        link(rel='manifest', href='/manifest.json')
+        link(rel='mask-icon', href='/safari-pinned-tab.svg', color='#5bbad5')
+        link(rel='canonical', href='https://sunpro.io/techbookfest/')
+        meta(name='msapplication-TileColor', content='#da532c')
+        meta(name='msapplication-TileImage', content='/mstile-144x144.png')
+        meta(name='theme-color', content='#de5920')
+        script(src='https://use.typekit.net/lnq1swp.js')
+    body
+        h1 SunPro会誌 2016 技術書典
+        p 2016年6月25日に開催された技術書オンリーイベント「技術書典」では、SunProも新たな会誌を販売しました。
+        p エンバーゴ(公開猶予期間)が過ぎた2016年12月26日、その全内容を公開します!
+        .publication
+            .left
+                img(src='images/cover.jpg')
+            .right
+                - var articles = [];
+                - articles.push({ title: 'ディープラーニングでご飯を作ってみる', author: 'hiromu', pdfsize: 1 });
+                - articles.push({ title: 'もしインターネットの1秒が1年だったら', author: 'hakatashi / Mine02C4', name: 'hakatashi', pdfsize: 2 });
+                - articles.push({ title: 'まだReactionで消耗してるの?', author: 'hideo54', pdfsize: 3 });
+                .articles
+                    each article in articles
+                        h3.title #{article.title}
+                            small.author #{article.author}
+                        ul
+                            li.html
+                                if article.name
+                                    a(href=article.name+'.html') HTML
+                                else
+                                    a(href=article.author+'.html') HTML
+                            li.pdf
+                                if article.name
+                                    a(href=article.name+'.pdf') PDF(#{article.pdfsize}MB)
+                                else
+                                    a(href=article.author+'.pdf') PDF(#{article.pdfsize}MB)

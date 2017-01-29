@@ -1,0 +1,38 @@
+extends partial/base.jade
+
+block header
+    header.header-section
+        .intro-header.no-img
+            .page-heading
+                h1!= page.title
+                if page.subtitle
+                    hr.small
+                    span.page-subheading!= page.subtitle
+        .pdf.text-center
+            a(href=page.pdf.link)
+                span.fa-stack.fa-lg
+                    i.fa.fa-circle.fa-stack-2x
+                    i.fa.fa-stack-1x.fa-inverse.fa-file-pdf-o
+                = `PDF版 (${page.pdf.size}MB)`
+        .socials.text-center
+            include partial/socials.jade
+        .links
+            if page.prev
+                .link-prev
+                    a(href=page.prev.link)
+                        i.fa.fa-arrow-left
+                        = page.prev.title
+            if page.next
+                .link-next
+                    a(href=page.next.link)
+                        = page.next.title
+                        i.fa.fa-arrow-right
+
+block content
+    .container
+        .row
+            .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+                article(role="main", class="blog-post")
+                    != page.content
+
+                include partial/comment.jade

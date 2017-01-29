@@ -1,0 +1,149 @@
+body, h1, h2, h3, h4, h5, h6, .navbar-custom {
+	font-family: /*"Noto Sans CJK JP",*/ "Meiryo", "メイリオ", "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "游ゴシック体", "YuGothic", "游ゴシック", "Yu Gothic", "IPAゴシック", "IPAGothic", "Arial", "Helvetica", sans-serif;
+}
+
+h1 > a, h2 > a, h3 > a, h4 > a {
+	transform: translateY(-80px);
+	display: block;
+}
+
+p {
+	word-wrap: break-word;
+}
+
+.links {
+	display: flex;
+	width: 1170px;
+	margin: 0 auto;
+	font-size: 16px;
+	font-weight: bold;
+	max-width: calc(100% - 30px);
+}
+
+@media only screen and (min-width: 768px) {
+	.links {
+		font-size: 24px;
+	}
+}
+
+.links a {
+	color: inherit;
+}
+
+.link-prev {
+	text-align: left;
+	flex: 1 0 0px;
+}
+
+.link-prev i {
+	margin-right: 0.3em;
+}
+
+.link-next {
+	text-align: right;
+	flex: 1 0 0px;
+}
+
+.link-next i {
+	margin-left: 0.3em;
+}
+
+.downloads > * {
+	display: inline-block;
+}
+
+.pdf a {
+	color: #cc1818;
+	font-weight: bold;
+}
+
+.epub a {
+	color: #1856cc;
+	font-weight: bold;
+}
+
+.mobi a {
+	color: #a3620b;
+	font-weight: bold;
+}
+
+.socials {
+	margin-top: 0.5em;
+}
+
+.socials > * {
+	margin: 0 0.2em;
+}
+
+.read-more {
+	text-align: right;
+}
+
+.read-more a {
+	display: inline-block;
+	background: #333;
+	color: white;
+	line-height: 2em;
+	padding: 0 1em;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+.blog-post > h1 {
+	display: none;
+}
+
+.noteref {
+	vertical-align: super;
+	font-size: 0.7em;
+}
+
+.footnote {
+	font-size: 0.8em;
+}
+
+.intro-header .page-heading h1 {
+	font-size: 40px;
+	white-space: nowrap;
+}
+
+@media only screen and (min-width: 768px) {
+	.intro-header .page-heading h1 {
+		font-size: 70px;
+	}
+}
+
+.navbar-custom .avatar-container  .avatar-img-border {
+	box-shadow: none;
+}
+
+.intro-header.big-img {
+	background-position-y: 0%;
+	animation: animate-header 60s infinite alternate;
+}
+
+.intro-header.big-img::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+@keyframes animate-header {
+	from { background-position-y: 0%; }
+	to { background-position-y: 100%; }
+}
+
+@media only screen and (max-width: 365px) {
+	.intro-header.big-img .page-heading, .intro-header.big-img .post-heading {
+		display: block;
+		padding: 2em 0;
+	}
+
+	.intro-header.big-img {
+		height: auto;
+	}
+}

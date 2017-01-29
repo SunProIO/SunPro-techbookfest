@@ -13,7 +13,7 @@ x:p:h1:h2:h3 = 12px:14px:16px:24px:30px
 }
 body {
     margin: 0;
-    padding: 0;
+    padding: 1em;
     font-size: 1em;
     line-height:1.6;
     font-family: "ShinGoPro-Regular","ShinGo-Regular", sans-serif;
@@ -188,6 +188,7 @@ div.image img {
     margin: 0 auto;
     padding: 0;
     display: block;
+    width: 100%;
 }
 div.image p.caption {
     margin: 0 auto;

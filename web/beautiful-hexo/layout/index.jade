@@ -1,0 +1,63 @@
+extends partial/base.jade
+
+block header
+    include partial/index-header.jade
+
+block content
+    div(class="container", role="main")
+        .row
+            .col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-2
+                p.
+                    2016年6月25日に開催された技術書オンリーイベント<a href="https://techbookfest.org/">「技術書典」</a>にて、
+                    SunProは技術系よろず同人誌『SunPro会誌 2016技術書典』を販売しました。
+                    現在はエンバーゴ(公開猶予期間)が過ぎたため、このページで無料公開中です。
+            .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+                .downloads.text-center
+                    .pdf
+                        a(href='https://github.com/hakatashi/SunPro-techbookfest/releases/download/201606200157/techbookfest.pdf')
+                            span.fa-stack.fa-lg
+                                i.fa.fa-circle.fa-stack-2x
+                                i.fa.fa-stack-1x.fa-inverse.fa-file-pdf-o
+                            | PDF (8.32MB)
+                    .epub
+                        a(href='https://github.com/hakatashi/SunPro-techbookfest/releases/download/201606200157/techbookfest.ebub')
+                            span.fa-stack.fa-lg
+                                i.fa.fa-circle.fa-stack-2x
+                                i.fa.fa-stack-1x.fa-inverse.fa-book
+                            | EPUB (6.75MB)
+                    .mobi
+                        a(href='https://github.com/hakatashi/SunPro-techbookfest/releases/download/201606200157/techbookfest.mobi')
+                            span.fa-stack.fa-lg
+                                i.fa.fa-circle.fa-stack-2x
+                                i.fa.fa-stack-1x.fa-inverse.fa-book
+                            | Kindle (12MB)
+                .socials.text-center
+                    include partial/socials.jade
+            .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+                -
+                    const articles = [{
+                        title: 'ディープラーニングでご飯を作ってみる',
+                        author: 'hiromu',
+                        name: 'hiromu',
+                        entry: '<p>こんにちは。SunProメンバーのhiromu(@hiromu1996)です。今回は、世間で何でもできると話題になっているディープラーニングについて、本当は何でもできるのであれば、この空いたお腹も満たしてくれようということで、ディープラーニングでご飯を作ってみるということに挑戦してみました。</p><p>……という出落ち記事です。実際は、ディープラーニングを使った画像生成アルゴリズムとして最近話題になっている「Deep Convolutional Generative Adversarial Network (DCGAN)」でご飯の画像を生成するということに挑戦してみました。</p>',
+                    }, {
+                        title: 'もしインターネットの1秒が1年だったら',
+                        author: 'hakatashi / Mine02C4',
+                        name: 'hakatashi',
+                        entry: '<p>2016年、インターネットが日本中のあらゆる人間に行き渡るようになってから、すでに10年単位の時間が経過しています。今日においてインターネットを支えるネットワーク技術が重要であることは言うまでもありませんが、実際にネットワークでどのタイミングで何が起こり、どれくらいの時間が費やされるのかということを身を持って体感している人は、たとえネットワークに精通している人でも少ないのではないでしょうか？この記事では、1秒というわずかな時間を1年にまで拡大し、ネットワーク上で何が起こっているかを人間スケールでざっくりと解説していきます。</p>',
+                    }, {
+                        title: 'まだReactionで消耗してるの?',
+                        author: 'hideo54',
+                        name: 'hideo54',
+                        entry: '<p>こんにちは、SunProメンバーの1人、hideo54です。灘高校で高校2年生をしながら、いろいろ遊んでいます。最近だとiOSやWebで動くようなプログラミングを好んでいます。</p><p>あと、この記事の内容も該当しますが、工作とプログラミングを絡めたい時にはRaspberry Piを愛用しています。(そういえば, 前回のSunPro会誌でもRPiを使って遊ぶ記事を書きました。無料公開していますのでぜひ。)</p>',
+                    }]
+                .articles
+                    each article in articles
+                        article.post-preview
+                            a(href=article.name+'.html')
+                                h2.post-title.title #{article.title}
+                                h3.post-subtitle.author #{article.author}
+                            .post-entry
+                                != article.entry
+                            p.read-more
+                                a(href=article.name+'.html') 続きを読む
