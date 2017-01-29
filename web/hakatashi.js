@@ -30,16 +30,16 @@
       'GitHub': 'https://github.com/hakatashi/SunPro-techbookfest',
     },
     footer: [{
-      link: '/../../hiromu.html',
+      link: 'hiromu.html',
       title: 'ディープラーニングでご飯を作ってみる',
       icon: 'fa-cutlery',
     }, {
       self: true,
-      link: '/../../hakatashi.html',
+      link: 'hakatashi.html',
       title: 'もしインターネットの1秒が1年だったら',
       icon: 'fa-clock-o',
     }, {
-      link: '/../../hideo54.html',
+      link: 'hideo54.html',
       title: 'まだReactionで消耗してるの?',
       icon: 'fa-thumbs-up',
     }],
