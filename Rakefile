@@ -35,7 +35,7 @@ task :html_all do
 end
 
 desc 'generate PDF and EPUB file'
-task :all => [:pdf, :epub]
+task :all => [:pdf, :epub, :web]
 
 desc 'generate PDF file'
 task :pdf => BOOK_PDF
