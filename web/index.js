@@ -9,7 +9,7 @@
     url: '',
     plain_title: '',
     subtitle: 'hakatashi / Mine02C4',
-    content: fs.readFileSync('../hakatashi.html'),
+    content: '',
     posts: [],
   },
   theme: {

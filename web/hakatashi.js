@@ -10,7 +10,7 @@
     plain_title: 'もしインターネットの1秒が1年だったら',
     title: 'もし<wbr>インターネットの<wbr>1秒が<wbr>1年だったら',
     subtitle: 'hakatashi / Mine02C4',
-    content: fs.readFileSync('../hakatashi.html'),
+    content: fs.readFileSync('../webroot/hakatashi.html'),
     pdf: {
       link: 'hakatashi.pdf',
       size: 0.5,

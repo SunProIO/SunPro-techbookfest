@@ -10,7 +10,7 @@
     plain_title: 'まだReactionで消耗してるの?',
     title: 'まだ<wbr>Reactionで<wbr>消耗してるの?',
     subtitle: 'hideo54',
-    content: fs.readFileSync('../hideo54.html'),
+    content: fs.readFileSync('../webroot/hideo54.html'),
     pdf: {
       link: 'hideo54.pdf',
       size: 0.8,

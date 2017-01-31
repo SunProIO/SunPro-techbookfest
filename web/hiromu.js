@@ -10,7 +10,7 @@
     plain_title: 'ディープラーニングでご飯を作ってみる',
     title: 'ディープ<wbr>ラーニングで<wbr>ご飯を<wbr>作ってみる',
     subtitle: 'hiromu',
-    content: fs.readFileSync('../hiromu.html'),
+    content: fs.readFileSync('../webroot/hiromu.html'),
     pdf: {
       link: 'hiromu.pdf',
       size: 8.2,
