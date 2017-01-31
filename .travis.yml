@@ -6,8 +6,10 @@ dist: trusty
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y texlive-lang-cjk texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra latex-xcolor --no-install-recommends
+  - npm install
 script:
   - bundle exec rake all 0<&-
+  - npm run build
 after_success:
   - wget https://kindlegen.s3.amazonaws.com/kindlegen_linux_2.6_i386_v2_9.tar.gz -O - | tar xzvf - kindlegen
   - ./kindlegen techbookfest.epub -c2 -verbose -o techbookfest.mobi
